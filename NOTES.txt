@@ -1,0 +1,200 @@
+O que são indexes? 
+um índice é uma estrutura (ou arquivo) auxiliar associado a uma tabela (ou coleção de dados). 
+Sua função é acelerar o tempo de acesso às linhas de uma tabela, criando ponteiros para os dados
+armazenados em colunas específicas.
+O índice leva o acesso diretamente à linha da tabela onde se encontra o dado requisitado,
+ evitando o gasto de tempo com a leitura de todos os dados da tabela.
+O emprego de indexação em tabelas pode aumentar significativamente a performance em consultas 
+ao banco de dados, porém pode diminuir a velocidade de transações como inserts e updates.
+Existem vários tipos de índices
+Índice em Árvore B (B-Tree), Índice de Bitmap, Índice de Hashing, booleano, funcional
+https://www.devmedia.com.br/otimizando-consultas-no-oracle-utilizando-indices/27710
+criação de um index:
+CREATE INDEX nome_do_indice
+   ON nome_da_tabela (nome_do_campo_onde_ficara_o_indice, nome_do_campo_onde_ficara_o_indice);
+
+
+
+Object-Oriented Programming Fundamentals in C#
+
+TOPICS:
+Identificação de classes de requisitos
+Separação das responsabilidades por classes focadas
+Definição de relacionamento entre classes
+Aproveitamento de reutilização através por meio de herança, interfaces e polimorfismos
+
+objetivo: conhecimento sobre o conceitos orientados a objeto, para assim aproveitar melhor os recursos
+do C# para criar aplicativos testados e bem elaborados
+
+INTRODUCTION
+clean code? -> organizar o codigo em classes apropriadas usando tecnicas de programacao orientadas a objetos
+defender o codigo de erros agora e no futuro? organizar o codigo em classes apropriadas usando tecnicas de programacao orientadas a objetos
+deseja usar uma abordagem iterativa ou agil para construir seu software? organizar o codigo em classes apropriadas usando tecnicas de programacao orientadas a objetos
+API ou interface de programacao de aplicativos para sua aplicacao? organizar o codigo em classes apropriadas usando tecnicas de programacao orientadas a objetos
+entender e implementar padroes de design? Design patterns sao baseados em conceitos de programacao orientados a objetos
+Domain Drive Desing -> principios de design orientados a dominio é baseado em conceitos de programacao orientados a objetos
+.NET Apps? organizar o codigo em classes apropriadas usando tecnicas de programacao orientadas a objetos
+
+Portanto entender e usar tecnicas de programacao orientadas a objetos é a base de muitas outras abordagens, 
+melhores praticas, padrões e arquiteturas
+
+Algumas definições OBJECT e CLASS -> duas palavras mais basicas na programacao orientada a objeto
+Não são a mesma coisa
+
+CLASS -> é um codigo -> contem a keyword "class" no codigo
+ex public class Customer
+Possui Propriedades -> propriedades definem os dados gerenciados pela classe
+Possui Funções -> as funções definem as ações ou comportamentos gerenciados pela classe
+Na programação orientado a objetos essas funções são chamadas de "métodos"
+
+Juntas as propriedades e métodos de uma classe definem os membros da classes
+o objetivo basico de uma classe é fornecer a definicao para um tipo especifico de objetos
+
+OBJECT -> é uma instância de uma classe. É criado usando a keyword do C# "new" 
+ex var customer = new Customer(); -> codigo cria uma nova instancia da classe, a instancia é um objeto
+customer = variavel que referencia o objeto resultante -> chamada de variavel do objeto
+representa um "customer" especifico, pode-se usar essa variavel para obter ou definir qualquer uma propriedade
+identificada na classe ex customer.FirstName = "Frodo";
+
+a variavel do objeto mantem o estado do objeto, ou seja, retem os valores de suas propriedades e usa a variavel
+do objeto para chamar qualquer um dos metodos identificados na classe ex customer.Validate();
+
+Quando o aplicativo termina o objeto desaparece, qualquer estado do objeto desaparece, a menos que tenha sido
+armazenado em algum lugar, como em um banco de dados. Mas a classe ainda existe, porque a classe esta definida
+no codigo.
+
+BUSINESS OBJECT
+Refere-se a classes definidas especificamento para resolver um problema de negocios.
+business objetc nao e uma objeto, e sim uma classe (inconsistente)
+
+ENTITY -> ENTIDADE
+é usado para definir as coisas que são significativas o suficiente para serem consideradas
+qualquer coisa do mundo real que seja significativa o suficiente para ser representada como uma classe no aplicativo
+é chamada de Entity
+
+Customer Management System (sistema de gerenciamento de clientes)
+Entity -> customer -> clientes
+Class -> customer (last name, first name, Metodos)
+Objects -> Bilbo Baggins, Frodo Baggins, Seu Barriga (instancias da classe, são clientes)
+
+o que é OOP (object-oriented programming)
+é uma abordagem para projetar e criar aplicativos que sejam flexiveis, naturais , bem trabalhados e testaveis
+concentrando-se em objetos que interagem de maneira limpa entre si
+
+1) identificar as classes a partir dos requisitos ou especificacao
+2) separar conforme necessarios as responsabilidades, analisando as classes identificadas, a OOP se concentrando-se
+em separar logicamente as responsabilidades do aplicativo em classes, a ideia é que a aplicacao seja decomposta em partes
+com minima sobreposicao. cada classe deve ter um proposito singular, ficando assim mais facil de se escreve-la, testa-la
+e depois encontrar essa classe para atualiza-la ou estende-la, tornando assim o codigo mais facil de se modificar
+e tambem para adaptar-se a novos requisitos e demandas futuras. Isso é chamado de PRINCIPIO DE SEPARAÇÃO DE INTERESSES
+3) estabelecer os relacionamentos entre as classes -> como esses relacionamentos definem como os objetos criados
+a partir dessas classes trabalham juntos para executar as operações do aplicativo. 
+4) reutilização -> ao se extrair a semelhança entre um conjunto de classes em uma classe separada, o codigo
+é mais reutilizavel. reutilizar clases existentes comprovadas reduz o tempo de desenvolvimento e leva a aplicativos mais robustos
+
+MODULO 3 - IDENTIFICANDO CLASSES DOS REQUERIMENTOS 
+Abstração - é o processo (conceito, uma maneira de pensar) de definir classes, simplificando a realidade, ignorando detalhes irrelevantes e
+concentrando-se no que é importante para um propósito. Abstrair os detalhes estranhos para se concentrar no que é
+relevante para a aplicação especifica. Abstração é um dos pilares da OOP, uma keyword da OOP
+Encapsulamento - diferente da abstração, que é um conceito (basicamente uma maneira de pensar), encapsulamento
+é uma técnica. É uma maneira de ocultar ou encapsular os dados e detalhes de implementação dentro de uma classe,
+ocultando assim a complexidade. 
+Os dados do objeto são expostos ao aplicativo por meio de getters e setters das propriedades.
+As operações são expostas ao aplicativo por meio de métodos.
+O exposto conjunto de métodos e getters e setters de propriedade definem a interface de classe para o restando
+do aplicativo.
+O encapsulamento permite que os objetos em um aplicativo trabalhem juntos sem que cada objeto conheça
+os detalhes da implementação de outro objeto. 
+Benficios:
+
+PROPRIEDADES:
+- protege os dados -> nenhum outro código pode modificar os dados subjacentes, exceto através dos getters e setters
+isso impede que os valores de um objeto sejam corrompidos por outros objetos. 
+- adicionar verificacao de autorização no getter para garantir que o usuario tenha acesso ao elemento de dados especifico
+- adicionar validação no setters antes que os dados sejam definidos, por ex para que os dados nunca sejam nulos
+
+MÉTODOS:
+ocultar os detalhes de implementação do método traz beneficios:
+- ajuda a gerenciar a complexidade do aplicativo divindo-o em unidades gerenciáveis
+- protege os outros objetos de ter que saber os detalhes da implementação
+- a implementação pode ser modificada sem impactar o resto da aplicação
+
+MODULO 4 - BUILDING ENTITY CLASSES
+maioria das aplicaçoes de hoje é construida em uma estrutura de camadas.
+solution -> para a aplicação toda 
+project -> para cada camada
+É minimamento dividia em três camadas:
+1) Camada de Interface do  Usuário -> é onde é criado os formularios ou páginas que são exibidos para o usuario.
+2) Camada de Lógica de Negócios -> é onde reside a maior parte da lógica do aplicativo, incluindo a lógica para 
+executar as operações de negocios. 
+3) Camada de Acesso a Dados -> contem o código para recuperar dados do banco de dados ou outro armazenamento
+de daods e salvar os dados de volta nesse armazenamento de dados. (camada do entity framework por ex)
+4) (não é regra nem realmente uma camada) Camada de Código em Comum -> muitos aplicativos incluem uma biblioteca
+comum para código de finalidade geral que é util em todo o aplicativo. Isso pode incluir código para recursos
+como registro ou envio de um email. 
+
+No visual studio, cada camada é um projeto, a aplicação é a solution. 
+O projeto de Interface do usuario pode complicar para um .EXE. As camadas restantes são criadas como bibliotecas
+de classes e compiladas para DLLs. 
+Com a camada da Logica do Negocio separada da interface do usuario, pode-se posteriormente adicionar uma 
+interface de usuario WEB junto do aplicativo de desktop sem retrabalhar ou reesrever qualquer logica de negocio.
+
+CRIAÇÃO DE UM NOVO PROJETO NO VISUAL STUDIO
+
+definição das propriedades das classes
+configurar como public  o modificador de acesso para as propriedades/metodos que podem ser acessados 
+ou modificados por outras classes e projetos
+
+snippets do visual studio -> prop, propg etc serve tornar mais facil e rapido adicionar propriedades e metodos
+a qualquer classe
+
+como experimentar (testar) o codigo? nao se pode executar um componente DLL
+
+Testes de unidade:
+é outro pedaço de código cuja unica finalidade é testar uma unidade especifica ou parte do nosso codigo.
+normalmente para cada propriedade e metodo da classe é escrito um teste unitario
+incluem teste com valores validos, testes com valores invalidos e testes para casos de canto
+arrange -> organize -> criar uma instancia de uma classe e configurar os dados de teste
+act -> acessar a propriedade ou o método q esta sendo testado 
+assert -> declarar para determinar o resultado do teste
+
+Criar projeto de testes -> adicionar referencia para o projeto de Business Layer (camada de negocios) 
+agora o projeto de testes tem acesso às classes no projeto de camada de negocios para que ele seja testado
+
+criando um novo objeto
+Customer customer = new Customer():
+var keyword -> define uma variavel digitada implicitamente -> var encurta a sintaxe e pode facilitar a leitura
+do codigo nos casos em que o tipo é obvio
+
+Objetos sao tipos de referencia, eles mantem uma referencia a seus dados, nao os dados em si.
+Isso é diferente de tipos de valor, como inteiros que armazenam seus dados diretamente. 
+
+Modificador Statico - static 
+declara um membro que pertence à propria classe em vez de a um objeto da classe. é util para rastrear
+informações compartilhadas entre todas as instancias da classe
+public static int InstanceCount { get; set; }
+usar o modificador static indica que o membro pertence à classe em vez de a qualquer instancia especifica
+para acessar os modificadores estaticos se utiliza o proprio nome da classe ex
+Customer.InstanceCount
+
+MODULO 5 - Building Entity Classes - Methods 
+metodos sobrecarregados / overloading -> metodos com o mesmo nome, mas parametros diferentes
+contract -> metodos e propriedades public que é acessivel a outras classes e projetos que precise deles
+contract tbm é chamado de INTERFACE
+contructors -> basicamente um método chamado com um nome de classe que é executado toda vez que uma instancia
+da classe é criada. São definidos normalmente no topo da classe, acima das propriedades.
+SNIPPED -> CTOR - abreviação de constructor
+constructor sem codigo -> default constructor 
+
+public decimal? CurrentPrice { get; set } 
+ponto de interrogação indica um tipo anulável, é um tipo de valor, como um inteiro ou decimal que permite
+a definição do valor ou um valor nulo.
+
+MODULO 6 - SEPARTION OF RESPONSIBILITIES 
+delegar responsabilidades a outras classes 
+todas as classes tem codigo para recuperar e salvar dados usando a camada de acesso a dados
+tornando-os fortemente acoplados a essa camada. pode-se reduzir esse acoplamento extraindo a recuperacao e salvando
+as operacoes em classes separadas. Se houver propriedades ou metodos em uma classe que nao sejam verdadeiramente
+relacionados ao proposito da classe, eles devem ser movidos para outra classe. objetivo é maximizar a coesao
+em cada classe. 
+Baixo acoplamento torna o teste mais direto, porque a classe tem dependencias minimas em outras classes.
